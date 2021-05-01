@@ -16,5 +16,15 @@ agent any
       }
     }
   }
-  
+  post {
+    success {
+      echo "All Good"
+    }
+    failure {
+      echo "Something failed"
+    }
+    always {
+       echo "Always"
+    }
+  }
 }
