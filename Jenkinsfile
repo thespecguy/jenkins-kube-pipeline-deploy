@@ -1,14 +1,18 @@
 pipeline {
 agent any
+  
+  parameters {
+    booleanParam(name: "isDeployPod" ,defaultValue: true)
+  }
   stages {
     stage('abc') {
       when {
         expression {
-          false
+          params.isDeployPod
         }
       }
       steps {
-        kubernetesDeploy(configs: "deploy.yml", kubeconfigId: "mykubeconfigfile" )
+        sh "kubectl apply -f deploy.yml --kubeconfig /admin.conf"
       }
     }
   }
