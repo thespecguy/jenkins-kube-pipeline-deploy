@@ -3,7 +3,7 @@ agent any
   stages {
     stage('abc') {
       steps {
-        kubernetesDeploy(configs: "deploy.yml")
+        kubernetesDeploy(configs: "deploy.yml", kubeconfigId: "mykubeconfigfile" )
       }
     }
   }
